@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1" >
+	<title>Space X klok</title>
+	<link rel="stylesheet" type="text/css" href="clock.css">
+	<script type="text/javascript">
+		// clock
+		function clock() {
+		var time = new Date(),
+    		hours = time.getHours(),
+   		 	minutes = time.getMinutes(),
+    	 	seconds = time.getSeconds();
+
+		document.querySelectorAll('.clock')[0].innerHTML = harold(hours) + ":" + harold(minutes) + ":" + harold(seconds);
+  
+  		function harold(standIn) {
+		    if (standIn < 10) {
+		      standIn = '0' + standIn
+		    }
+		    return standIn;
+		  }
+		}
+		setInterval(clock, 1000);
+
+		//background
+
+		function nextBackground(){
+			
+			var thisTime = new Date().getHours();
+
+			if (thisTime > 6 && thisTime < 7){
+				// sunrise
+				document.body.className = 'sun';
+			} else if (thisTime >= 7 && thisTime < 19) {
+				// day
+				document.body.className = 'day';
+			} else if (thisTime >= 19 && thisTime < 20) {
+				// sundown
+				document.body.className = 'midnight';
+			} else {
+				//night
+				document.body.className = 'midnight';
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<div><script>nextBackground();</script>
+		<div class="container">
+				<header class="header">
+					<img src="images/logo.png" alt="spacexlogo" height="80" width="340">
+				</header>
+				<aside class="aside"></aside>
+				<main class="main">
+					<div class="container-2">
+						<div class="clock"></div>
+					</div>
+				</main>
+			</div>
+		</div>
+</body>
+</html>
